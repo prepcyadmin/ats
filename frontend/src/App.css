@@ -105,3 +105,77 @@ body {
   outline: none; /* Remove outline on focus */
   box-shadow: 0 0 0 4px rgba(0, 214, 255, 0.6); /* Add cool glowing effect */
 }
+
+/* Responsive Design for Result Page */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  
+  .container {
+    padding: 20px;
+    width: 95%;
+  }
+  
+  /* Ensure charts are responsive on mobile */
+  canvas {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* Tablet adjustments */
+  .container {
+    max-width: 95%;
+  }
+}
+
+/* Professional Side-by-Side Input Layout */
+.inputs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: stretch; /* Make cards equal height */
+}
+
+@media (max-width: 768px) {
+  .inputs-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Textarea placeholder styling */
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+  opacity: 1;
+}
+
+textarea::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+textarea::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+  opacity: 1;
+}
+
+textarea:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Upload container improvements */
+.upload-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .upload-container {
+    padding: 20px 15px;
+  }
+}

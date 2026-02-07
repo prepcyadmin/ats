@@ -71,7 +71,7 @@ const Result = ({ results }) => {
             Cosine Similarity: {result.cosineSimilarity !== undefined ? result.cosineSimilarity : 'N/A'}
           </p>
           <p style={{ margin: 0 }}>
-            Fuzzy Keyword Score: {result.fuzzyKeywordScore !== undefined ? result.fuzzyKeywordScore : 'N/A'}
+            Keyword Match Score: {result.keywordMatchScore !== undefined ? result.keywordMatchScore : 'N/A'}%
           </p>
 
           <Link

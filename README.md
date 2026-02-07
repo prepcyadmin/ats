@@ -1,70 +1,260 @@
-# Getting Started with Create React App
+# ATS Scanner - Industry-Grade Resume Analysis System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A professional Applicant Tracking System (ATS) that analyzes resumes against job descriptions using advanced NLP and machine learning techniques.
 
-## Available Scripts
+## 🏗️ Project Structure
 
-In the project directory, you can run:
+```
+reee/
+├── frontend/          # React frontend application
+│   ├── src/          # React source code
+│   ├── public/       # Public assets
+│   └── package.json  # Frontend dependencies
+│
+├── backend/          # Node.js/Express API
+│   ├── config/      # Configuration files
+│   ├── controllers/ # Request handlers
+│   ├── middleware/   # Custom middleware
+│   ├── routes/       # API routes
+│   ├── services/     # Business logic
+│   ├── utils/        # Utility functions
+│   ├── server.js     # Backend entry point
+│   └── package.json  # Backend dependencies
+│
+└── package.json      # Root convenience scripts
+```
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Dynamic Scoring**: No hardcoded values - all scores calculated based on actual matches
+- **Advanced NLP**: TF-IDF keyword extraction, cosine similarity, fuzzy matching
+- **Industry-Grade Architecture**: MVC pattern, separation of concerns, proper error handling
+- **RESTful API**: Clean, well-structured API endpoints
+- **File Validation**: PDF validation, size limits, type checking
+- **Error Handling**: Comprehensive error handling and validation
+- **Environment Configuration**: Environment variables for easy configuration
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (v18 or higher)
+- npm or yarn
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd reee
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Install Frontend Dependencies**
+   ```bash
+   cd frontend
+   npm install
+   cd ..
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Install Backend Dependencies**
+   ```bash
+   cd backend
+   npm install
+   cd ..
+   ```
 
-### `npm run eject`
+4. **Configure Environment Variables**
+   
+   Create `backend/.env` file:
+   ```env
+   PORT=5000
+   NODE_ENV=development
+   CORS_ORIGIN=http://localhost:3000
+   MAX_FILE_SIZE=10485760
+   MAX_FILES=10
+   KEYWORD_COUNT=30
+   COSINE_WEIGHT=0.5
+   KEYWORD_MATCH_WEIGHT=0.5
+   MAX_BOOST_POINTS=20
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   Create `frontend/.env` (optional):
+   ```env
+   REACT_APP_API_URL=http://localhost:5000/api/v1
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Running the Application
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. **Start the Backend Server**
+   ```bash
+   cd backend
+   npm start
+   # or for development with auto-reload:
+   npm run dev
+   ```
+   Backend will run on `http://localhost:5000`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. **Start the Frontend (in a new terminal)**
+   ```bash
+   cd frontend
+   npm start
+   ```
+   Frontend will run on `http://localhost:3000`
 
-## Learn More
+## 📡 API Endpoints
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Health Check
+```
+GET /api/v1/resumes/health
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Analyze Resumes
+```
+POST /api/v1/resumes/analyze
+Content-Type: multipart/form-data
 
-### Code Splitting
+Body:
+- resumes: File[] (PDF files)
+- jobDescription: string
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "results": [
+      {
+        "resumeName": "resume.pdf",
+        "matchPercentage": 85,
+        "cosineSimilarity": "75.5",
+        "keywordMatchScore": "80.0",
+        "topKeywords": [...],
+        "jobKeywords": [...],
+        "keywordsCount": {...},
+        "skills": {...},
+        "resumeText": "..."
+      }
+    ],
+    "totalProcessed": 5,
+    "successful": 5,
+    "failed": 0
+  }
+}
+```
 
-### Analyzing the Bundle Size
+## 🔧 Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Backend Configuration
 
-### Making a Progressive Web App
+Edit `backend/.env` to configure:
+- **PORT**: Server port (default: 5000)
+- **CORS_ORIGIN**: Allowed CORS origin
+- **MAX_FILE_SIZE**: Maximum file size in bytes (default: 10MB)
+- **MAX_FILES**: Maximum number of files per request
+- **KEYWORD_COUNT**: Number of keywords to extract
+- **COSINE_WEIGHT**: Weight for cosine similarity (0-1)
+- **KEYWORD_MATCH_WEIGHT**: Weight for keyword matching (0-1)
+- **MAX_BOOST_POINTS**: Maximum boost points for keyword matches
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Frontend Configuration
 
-### Advanced Configuration
+Edit `frontend/.env` to configure:
+- **REACT_APP_API_URL**: Backend API URL
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🧪 How It Works
 
-### Deployment
+1. **PDF Extraction**: Extracts text from uploaded PDF resumes
+2. **Keyword Extraction**: Uses TF-IDF to extract important keywords from both resume and job description
+3. **Similarity Calculation**: 
+   - Cosine similarity between full texts
+   - Keyword matching score (exact + fuzzy matches)
+4. **Score Calculation**: 
+   - Base score: Weighted combination of cosine similarity and keyword matching
+   - Boost: Additional points for matching job requirements
+5. **Ranking**: Resumes sorted by match percentage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📦 Project Structure Details
 
-### `npm run build` fails to minify
+### Frontend (`frontend/`)
+- **src/components/**: React components
+- **src/config/**: API configuration
+- **public/**: Static assets and HTML template
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Backend (`backend/`)
+- **config/**: Configuration and environment variables
+- **controllers/**: Request handlers (MVC pattern)
+- **middleware/**: Custom middleware (error handling, validation, CORS)
+- **routes/**: API route definitions
+- **services/**: Business logic (ATS scoring, resume processing)
+- **utils/**: Utility functions (PDF extraction, text processing, similarity)
+
+## 🛠️ Technologies Used
+
+### Backend
+- Express.js - Web framework
+- pdf-parse - PDF text extraction
+- natural - NLP library
+- Fuse.js - Fuzzy string matching
+- express-fileupload - File upload handling
+- dotenv - Environment variables
+
+### Frontend
+- React - UI library
+- React Router - Routing
+- Chart.js / react-chartjs-2 - Data visualization
+
+## 📝 Development
+
+### Backend Development
+```bash
+cd backend
+npm run dev  # Uses nodemon for auto-reload
+```
+
+### Frontend Development
+```bash
+cd frontend
+npm start  # React development server with hot reload
+```
+
+## 🚢 Production Build
+
+### Frontend
+```bash
+cd frontend
+npm run build
+```
+Builds the app for production to the `build` folder.
+
+### Backend
+```bash
+cd backend
+npm start
+```
+
+## 📄 License
+
+ISC
+
+## 📊 Feature Comparison & Roadmap
+
+We've conducted a comprehensive comparison with industry-leading resume AI tools (Jobscan, Resume.io, TopResume) to identify missing features and improvement opportunities.
+
+**📄 Documentation:**
+- **[MISSING_FEATURES_SUMMARY.md](./MISSING_FEATURES_SUMMARY.md)** - Quick reference of missing features
+- **[FEATURE_COMPARISON.md](./FEATURE_COMPARISON.md)** - Detailed comparison with industry standards
+- **[IMPLEMENTATION_ROADMAP.md](./IMPLEMENTATION_ROADMAP.md)** - Prioritized implementation plan
+
+**🔴 Top Missing Features:**
+1. Resume Formatting & ATS Compatibility Analysis
+2. Actionable Recommendations Engine
+3. Structured Resume Parsing
+4. Resume Section Analysis
+5. Keyword Density & Optimization
+
+See the roadmap documents for implementation priorities and timelines.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
