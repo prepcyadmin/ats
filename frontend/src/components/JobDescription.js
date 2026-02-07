@@ -1,7 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const JobDescription = ({ onJobDescriptionChange }) => {
   const [jobDescription, setJobDescription] = useState("");
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleChange = (e) => {
     setJobDescription(e.target.value);
@@ -10,8 +19,8 @@ const JobDescription = ({ onJobDescriptionChange }) => {
 
   const containerStyle = {
     width: '100%',
-    padding: '25px',
-    borderRadius: '16px',
+    padding: isMobile ? '16px' : '25px',
+    borderRadius: isMobile ? '12px' : '16px',
     background: 'linear-gradient(135deg, rgba(0, 214, 255, 0.12) 0%, rgba(138, 43, 226, 0.08) 100%)',
     boxShadow: '0 8px 32px rgba(0, 214, 255, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1) inset',
     backdropFilter: 'blur(10px)',
@@ -28,8 +37,8 @@ const JobDescription = ({ onJobDescriptionChange }) => {
   };
 
   const headingStyle = {
-    fontSize: '18px',
-    marginBottom: '18px',
+    fontSize: isMobile ? '14px' : '18px',
+    marginBottom: isMobile ? '12px' : '18px',
     textAlign: 'center',
     color: '#ffffff',
     fontWeight: '700',
@@ -43,10 +52,10 @@ const JobDescription = ({ onJobDescriptionChange }) => {
 
   const textareaStyle = {
     width: '100%',
-    minHeight: '180px',
-    padding: '14px',
-    fontSize: '14px',
-    borderRadius: '10px',
+    minHeight: isMobile ? '140px' : '180px',
+    padding: isMobile ? '10px' : '14px',
+    fontSize: isMobile ? '13px' : '14px',
+    borderRadius: isMobile ? '8px' : '10px',
     border: '1px solid rgba(255, 255, 255, 0.2)',
     resize: 'vertical',
     background: 'rgba(255, 255, 255, 0.15)',
@@ -66,22 +75,22 @@ const JobDescription = ({ onJobDescriptionChange }) => {
         position: 'absolute',
         top: 0,
         right: 0,
-        width: '90px',
-        height: '90px',
+        width: isMobile ? '60px' : '90px',
+        height: isMobile ? '60px' : '90px',
         background: 'radial-gradient(circle, rgba(0, 214, 255, 0.2) 0%, transparent 70%)',
         borderRadius: '0 20px 0 100%'
       }} />
       
       <h2 style={headingStyle}>
         <span style={{
-          width: '36px',
-          height: '36px',
-          borderRadius: '10px',
+          width: isMobile ? '28px' : '36px',
+          height: isMobile ? '28px' : '36px',
+          borderRadius: isMobile ? '8px' : '10px',
           background: 'linear-gradient(135deg, rgba(0, 214, 255, 0.3), rgba(138, 43, 226, 0.3))',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontSize: '18px',
+          fontSize: isMobile ? '14px' : '18px',
           boxShadow: '0 4px 15px rgba(0, 214, 255, 0.3)'
         }}>📋</span>
         <span>Job Description</span>
@@ -106,8 +115,8 @@ const JobDescription = ({ onJobDescriptionChange }) => {
         />
         
         <div style={{
-          marginTop: '12px',
-          fontSize: '12px',
+          marginTop: isMobile ? '8px' : '12px',
+          fontSize: isMobile ? '10px' : '12px',
           color: jobDescription.length >= 50 ? 'rgba(0, 255, 127, 0.9)' : 'rgba(255, 255, 255, 0.7)',
           textAlign: 'right',
           fontWeight: '500',

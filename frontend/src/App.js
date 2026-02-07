@@ -13,6 +13,16 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showAdmin, setShowAdmin] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  // Check window size for mobile
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Check if admin page should be shown (only via URL routes)
   useEffect(() => {
@@ -117,26 +127,28 @@ function App() {
     <div className="upload-container">
       <div style={{
         textAlign: 'center',
-        marginBottom: '35px',
-        padding: '0 20px'
+        marginBottom: isMobile ? '20px' : '35px',
+        padding: isMobile ? '0 10px' : '0 20px'
       }}>
         <h1 style={{
-          fontSize: 'clamp(24px, 4vw, 36px)',
+          fontSize: isMobile ? '18px' : 'clamp(24px, 4vw, 36px)',
           fontWeight: '700',
           color: '#ffffff',
-          marginBottom: '12px',
+          marginBottom: isMobile ? '8px' : '12px',
           textShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
-          letterSpacing: '0.5px'
+          letterSpacing: isMobile ? '0.3px' : '0.5px',
+          lineHeight: isMobile ? '1.3' : '1.4'
         }}>
           AI ATS Scanner - AI Graph Analysis
         </h1>
         <p style={{ 
           color: 'rgba(255, 255, 255, 0.9)', 
-          fontSize: 'clamp(12px, 1.8vw, 16px)',
+          fontSize: isMobile ? '11px' : 'clamp(12px, 1.8vw, 16px)',
           textShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
-          maxWidth: '600px',
+          maxWidth: isMobile ? '100%' : '600px',
           margin: '0 auto',
-          lineHeight: '1.6'
+          lineHeight: isMobile ? '1.4' : '1.6',
+          padding: isMobile ? '0 5px' : '0'
         }}>
           Upload your resume and job description to get an instant ATS analysis
         </p>
@@ -144,12 +156,12 @@ function App() {
       
       <div style={{
         display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '20px',
-        maxWidth: '1100px',
-        margin: '0 auto 30px',
+        gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+        gap: isMobile ? '12px' : '20px',
+        maxWidth: isMobile ? '100%' : '1100px',
+        margin: isMobile ? '0 auto 20px' : '0 auto 30px',
         width: '100%',
-        padding: '0 20px',
+        padding: isMobile ? '0 10px' : '0 20px',
         boxSizing: 'border-box'
       }} className="inputs-grid">
         <ResumeUpload onFileChange={setFile} />
@@ -184,11 +196,12 @@ function App() {
           style={{
             opacity: (loading || !file || !jobDescription || jobDescription.length < 50) ? 0.6 : 1,
             cursor: (loading || !file || !jobDescription || jobDescription.length < 50) ? 'not-allowed' : 'pointer',
-            minWidth: '200px',
-            padding: '14px 32px',
-            fontSize: '16px',
+            minWidth: isMobile ? '100%' : '200px',
+            maxWidth: isMobile ? '100%' : 'none',
+            padding: isMobile ? '12px 24px' : '14px 32px',
+            fontSize: isMobile ? '14px' : '16px',
             fontWeight: '700',
-            letterSpacing: '0.5px',
+            letterSpacing: isMobile ? '0.3px' : '0.5px',
             transition: 'all 0.3s ease'
           }}
         >
