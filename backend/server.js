@@ -4,8 +4,20 @@ import { corsMiddleware } from './middleware/corsConfig.js';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
 import resumeRoutes from './routes/resumeRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
+import { connectDatabase } from './services/database.js';
 
 const app = express();
+
+// Initialize database connection
+connectDatabase().then(db => {
+  if (db) {
+    console.log('✅ MongoDB connected - Analytics will persist across deployments');
+  } else {
+    console.log('⚠️  Using file-based storage - Data will reset on deployments');
+  }
+}).catch(err => {
+  console.error('⚠️  Database connection failed, using file storage:', err.message);
+});
 
 // Middleware
 app.use(corsMiddleware);

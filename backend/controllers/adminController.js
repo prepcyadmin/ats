@@ -5,7 +5,7 @@ import { getAnalytics, resetAnalytics } from '../services/analyticsService.js';
  */
 export async function getAdminStats(req, res) {
   try {
-    const analytics = getAnalytics();
+    const analytics = await getAnalytics();
     
     res.json({
       success: true,
@@ -28,7 +28,7 @@ export async function getAdminStats(req, res) {
  */
 export async function resetStats(req, res) {
   try {
-    resetAnalytics();
+    await resetAnalytics();
     
     res.json({
       success: true,

@@ -29,7 +29,10 @@ export const analyzeResume = async (req, res, next) => {
     const fileType = file.name.split('.').pop() || 'unknown';
     const atsScore = result.formattingAnalysis?.atsReadabilityScore || 0;
     const jdScore = result.jdMatchScore || 0;
-    trackSearch(ipAddress, fileType, atsScore, jdScore);
+    // Track analytics (don't await - run in background)
+    trackSearch(ipAddress, fileType, atsScore, jdScore).catch(err => {
+      console.error('Error tracking analytics:', err);
+    });
 
     res.status(200).json({
       success: true,
