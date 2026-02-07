@@ -1,19 +1,104 @@
 /**
  * Analytics Service - Tracks usage statistics
- * In-memory storage (can be replaced with database)
+ * File-based persistence (survives server restarts)
  */
 
-// In-memory storage for analytics
-let analyticsData = {
-  totalUsers: new Set(), // Track unique users by IP/session
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Path to analytics data file
+const ANALYTICS_FILE = path.join(__dirname, '../data/analytics.json');
+
+// Ensure data directory exists
+const dataDir = path.dirname(ANALYTICS_FILE);
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
+
+// Default analytics data structure
+const defaultAnalyticsData = {
+  totalUsers: [], // Array of IP addresses (converted from Set for JSON)
   totalSearches: 0,
   searchesByDate: {}, // { '2024-01-01': 5, ... }
-  usersByDate: {}, // { '2024-01-01': Set([ip1, ip2]), ... }
+  usersByDate: {}, // { '2024-01-01': [ip1, ip2], ... } (arrays instead of Sets)
   trafficByHour: {}, // { '14': 10, ... } hour -> count
   fileTypes: {}, // { 'pdf': 10, 'docx': 5, ... }
   averageScore: { ats: 0, jd: 0, count: 0 },
   createdAt: new Date().toISOString()
 };
+
+// Load analytics data from file or initialize with defaults
+function loadAnalyticsData() {
+  try {
+    if (fs.existsSync(ANALYTICS_FILE)) {
+      const fileData = fs.readFileSync(ANALYTICS_FILE, 'utf8');
+      const parsed = JSON.parse(fileData);
+      // Convert arrays back to Sets for runtime use
+      return {
+        ...parsed,
+        totalUsers: new Set(parsed.totalUsers || []),
+        usersByDate: Object.keys(parsed.usersByDate || {}).reduce((acc, date) => {
+          acc[date] = new Set(parsed.usersByDate[date] || []);
+          return acc;
+        }, {})
+      };
+    }
+  } catch (error) {
+    console.error('Error loading analytics data:', error);
+  }
+  // Return defaults with Sets
+  return {
+    ...defaultAnalyticsData,
+    totalUsers: new Set(),
+    usersByDate: {}
+  };
+}
+
+// Save analytics data to file
+function saveAnalyticsData() {
+  try {
+    // Convert Sets to arrays for JSON serialization
+    const dataToSave = {
+      totalUsers: Array.from(analyticsData.totalUsers),
+      totalSearches: analyticsData.totalSearches,
+      searchesByDate: analyticsData.searchesByDate,
+      usersByDate: Object.keys(analyticsData.usersByDate).reduce((acc, date) => {
+        acc[date] = Array.from(analyticsData.usersByDate[date]);
+        return acc;
+      }, {}),
+      trafficByHour: analyticsData.trafficByHour,
+      fileTypes: analyticsData.fileTypes,
+      averageScore: analyticsData.averageScore,
+      createdAt: analyticsData.createdAt
+    };
+    fs.writeFileSync(ANALYTICS_FILE, JSON.stringify(dataToSave, null, 2), 'utf8');
+  } catch (error) {
+    console.error('Error saving analytics data:', error);
+  }
+}
+
+// Initialize analytics data
+let analyticsData = loadAnalyticsData();
+
+// Auto-save every 30 seconds
+setInterval(() => {
+  saveAnalyticsData();
+}, 30000);
+
+// Save on process exit
+process.on('SIGTERM', () => {
+  saveAnalyticsData();
+  process.exit(0);
+});
+
+process.on('SIGINT', () => {
+  saveAnalyticsData();
+  process.exit(0);
+});
 
 /**
  * Track a new search/analysis
@@ -57,6 +142,9 @@ export function trackSearch(ipAddress, fileType, atsScore = 0, jdScore = 0) {
     analyticsData.fileTypes[normalizedFileType] = 0;
   }
   analyticsData.fileTypes[normalizedFileType]++;
+
+  // Save to file after each update
+  saveAnalyticsData();
 
   // Track average scores
   if (atsScore > 0 || jdScore > 0) {
@@ -136,4 +224,5 @@ export function resetAnalytics() {
     averageScore: { ats: 0, jd: 0, count: 0 },
     createdAt: new Date().toISOString()
   };
+  saveAnalyticsData();
 }
