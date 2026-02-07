@@ -3,6 +3,7 @@ import ResumeUpload from './components/ResumeUpload';
 import JobDescription from './components/JobDescription';
 import ResultPage from './components/ResultPage';
 import AdminDashboard from './components/AdminDashboard';
+import { normalizeApiUrl } from './config/api.js';
 import './App.css';
 
 function App() {
@@ -58,7 +59,8 @@ function App() {
       formData.append('resume', file);
       formData.append('jobDescription', jobDescription);
 
-      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1';
+      const API_URL = normalizeApiUrl(process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1');
+      
       const response = await fetch(`${API_URL}/resumes/analyze`, {
         method: 'POST',
         body: formData,

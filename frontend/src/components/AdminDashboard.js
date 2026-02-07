@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Bar, Line, Doughnut } from 'react-chartjs-2';
+import { normalizeApiUrl } from '../config/api.js';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -80,7 +81,7 @@ const AdminDashboard = () => {
 
   const fetchStats = async () => {
     try {
-      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1';
+      const API_URL = normalizeApiUrl(process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1');
       const response = await fetch(`${API_URL}/admin/stats`);
       const data = await response.json();
       if (data.success) {
@@ -101,7 +102,7 @@ const AdminDashboard = () => {
       return;
     }
     try {
-      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1';
+      const API_URL = normalizeApiUrl(process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1');
       const response = await fetch(`${API_URL}/admin/reset`, {
         method: 'POST'
       });

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Radar, Bar, Doughnut } from 'react-chartjs-2';
-import { API_ENDPOINTS } from '../config/api';
+import { API_ENDPOINTS, normalizeApiUrl } from '../config/api';
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -733,7 +733,7 @@ const ResultPage = ({ result, onReset }) => {
                 <button
                     onClick={async () => {
                         try {
-                            const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1';
+                            const API_URL = normalizeApiUrl(process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1');
                             const response = await fetch(`${API_URL}/resumes/export`, {
                                 method: 'POST',
                                 headers: {
