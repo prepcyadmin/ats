@@ -1,19 +1,20 @@
 # React Router and API Proxy Configuration for Hostinger
-# Place this file in public_html/ folder
+# Place this file in public_html/ats/ folder
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /
+  RewriteBase /ats/
 
-  # Handle API requests - proxy to backend
-  RewriteCond %{REQUEST_URI} ^/api/(.*)$
-  RewriteRule ^api/(.*)$ http://localhost:5000/api/$1 [P,L]
+  # Handle API requests - proxy to backend (Render.com)
+  RewriteCond %{REQUEST_URI} ^/ats/api/(.*)$
+  RewriteRule ^ats/api/(.*)$ https://ats-backend-df54.onrender.com/api/$1 [P,L]
 
-  # Handle React Router - serve index.html for all routes
+  # Handle React Router - serve index.html for all routes under /ats
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_URI} !^/api/
-  RewriteRule . /index.html [L]
+  RewriteCond %{REQUEST_URI} !^/ats/api/
+  RewriteCond %{REQUEST_URI} ^/ats
+  RewriteRule . /ats/index.html [L]
 </IfModule>
 
 # Enable compression

@@ -31,7 +31,8 @@ function App() {
     const params = new URLSearchParams(window.location.search);
     
     // Only show admin if explicitly in URL (hash, path, or query param)
-    if (hash === '#admin' || path === '/admin' || params.get('page') === 'admin') {
+    // Support both /ats/admin and /admin paths
+    if (hash === '#admin' || path === '/admin' || path === '/ats/admin' || params.get('page') === 'admin') {
       setShowAdmin(true);
     } else {
       setShowAdmin(false);
