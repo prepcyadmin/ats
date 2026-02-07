@@ -135,7 +135,7 @@ body {
 .inputs-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  gap: 20px;
   align-items: stretch; /* Make cards equal height */
 }
 
@@ -168,9 +168,9 @@ textarea:-ms-input-placeholder {
 /* Upload container improvements */
 .upload-container {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 30px 20px;
   box-sizing: border-box;
 }
 

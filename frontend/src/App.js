@@ -117,22 +117,22 @@ function App() {
     <div className="upload-container">
       <div style={{
         textAlign: 'center',
-        marginBottom: '50px',
+        marginBottom: '35px',
         padding: '0 20px'
       }}>
         <h1 style={{
-          fontSize: 'clamp(32px, 5vw, 48px)',
+          fontSize: 'clamp(24px, 4vw, 36px)',
           fontWeight: '700',
           color: '#ffffff',
-          marginBottom: '15px',
+          marginBottom: '12px',
           textShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
-          letterSpacing: '1px'
+          letterSpacing: '0.5px'
         }}>
           AI ATS Scanner - AI Graph Analysis
         </h1>
         <p style={{ 
           color: 'rgba(255, 255, 255, 0.9)', 
-          fontSize: 'clamp(14px, 2vw, 18px)',
+          fontSize: 'clamp(12px, 1.8vw, 16px)',
           textShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
           maxWidth: '600px',
           margin: '0 auto',
@@ -145,9 +145,9 @@ function App() {
       <div style={{
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
-        gap: '30px',
-        maxWidth: '1200px',
-        margin: '0 auto 40px',
+        gap: '20px',
+        maxWidth: '1100px',
+        margin: '0 auto 30px',
         width: '100%',
         padding: '0 20px',
         boxSizing: 'border-box'
@@ -184,11 +184,11 @@ function App() {
           style={{
             opacity: (loading || !file || !jobDescription || jobDescription.length < 50) ? 0.6 : 1,
             cursor: (loading || !file || !jobDescription || jobDescription.length < 50) ? 'not-allowed' : 'pointer',
-            minWidth: '220px',
-            padding: '18px 40px',
-            fontSize: '18px',
+            minWidth: '200px',
+            padding: '14px 32px',
+            fontSize: '16px',
             fontWeight: '700',
-            letterSpacing: '1px',
+            letterSpacing: '0.5px',
             transition: 'all 0.3s ease'
           }}
         >

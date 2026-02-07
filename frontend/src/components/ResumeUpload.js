@@ -13,8 +13,8 @@ const ResumeUpload = ({ onFileChange }) => {
 
   const containerStyle = {
     width: '100%',
-    padding: '35px',
-    borderRadius: '20px',
+    padding: '25px',
+    borderRadius: '16px',
     background: 'linear-gradient(135deg, rgba(0, 255, 127, 0.12) 0%, rgba(0, 214, 255, 0.08) 100%)',
     boxShadow: '0 8px 32px rgba(0, 255, 127, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1) inset',
     backdropFilter: 'blur(10px)',
@@ -31,8 +31,8 @@ const ResumeUpload = ({ onFileChange }) => {
   };
 
   const headingStyle = {
-    fontSize: '22px',
-    marginBottom: '25px',
+    fontSize: '18px',
+    marginBottom: '18px',
     textAlign: 'center',
     color: '#ffffff',
     fontWeight: '700',
@@ -57,18 +57,18 @@ const ResumeUpload = ({ onFileChange }) => {
   const uploadButtonStyle = {
     background: 'linear-gradient(135deg, #00ff7f 0%, #00d2ff 100%)',
     color: '#000',
-    padding: '16px 32px',
-    borderRadius: '12px',
+    padding: '12px 24px',
+    borderRadius: '10px',
     border: 'none',
     cursor: 'pointer',
-    fontSize: '16px',
+    fontSize: '14px',
     fontWeight: '700',
     transition: 'all 0.3s ease-in-out',
     width: '100%',
-    maxWidth: '300px',
+    maxWidth: '280px',
     textAlign: 'center',
     boxShadow: '0 4px 15px rgba(0, 255, 127, 0.4)',
-    letterSpacing: '0.5px'
+    letterSpacing: '0.3px'
   };
 
   const listStyle = {
@@ -89,22 +89,22 @@ const ResumeUpload = ({ onFileChange }) => {
         position: 'absolute',
         top: 0,
         right: 0,
-        width: '120px',
-        height: '120px',
+        width: '90px',
+        height: '90px',
         background: 'radial-gradient(circle, rgba(0, 255, 127, 0.2) 0%, transparent 70%)',
         borderRadius: '0 20px 0 100%'
       }} />
       
       <h2 style={headingStyle}>
         <span style={{
-          width: '45px',
-          height: '45px',
-          borderRadius: '12px',
+          width: '36px',
+          height: '36px',
+          borderRadius: '10px',
           background: 'linear-gradient(135deg, rgba(0, 255, 127, 0.3), rgba(0, 214, 255, 0.3))',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontSize: '24px',
+          fontSize: '18px',
           boxShadow: '0 4px 15px rgba(0, 255, 127, 0.3)'
         }}>📄</span>
         <span>Upload Resume</span>

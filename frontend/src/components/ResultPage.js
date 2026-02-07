@@ -871,7 +871,7 @@ const ResultPage = ({ result, onReset }) => {
                         <SpeedometerGauge 
                             value={atsReadabilityScore}
                             color={atsReadabilityScore >= 80 ? '#00ff7f' : atsReadabilityScore >= 60 ? '#FFA500' : '#ff6384'}
-                            size={isMobile ? 200 : 240}
+                            size={isMobile ? 160 : 180}
                         />
                     </div>
                     
@@ -966,7 +966,7 @@ const ResultPage = ({ result, onReset }) => {
                         <SpeedometerGauge 
                             value={jdMatchScore}
                             color={jdMatchScore >= 80 ? '#00ff7f' : jdMatchScore >= 60 ? '#FFA500' : '#ff6384'}
-                            size={isMobile ? 200 : 240}
+                            size={isMobile ? 160 : 180}
                         />
                     </div>
                     

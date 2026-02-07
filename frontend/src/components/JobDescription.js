@@ -10,8 +10,8 @@ const JobDescription = ({ onJobDescriptionChange }) => {
 
   const containerStyle = {
     width: '100%',
-    padding: '35px',
-    borderRadius: '20px',
+    padding: '25px',
+    borderRadius: '16px',
     background: 'linear-gradient(135deg, rgba(0, 214, 255, 0.12) 0%, rgba(138, 43, 226, 0.08) 100%)',
     boxShadow: '0 8px 32px rgba(0, 214, 255, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1) inset',
     backdropFilter: 'blur(10px)',
@@ -28,8 +28,8 @@ const JobDescription = ({ onJobDescriptionChange }) => {
   };
 
   const headingStyle = {
-    fontSize: '22px',
-    marginBottom: '25px',
+    fontSize: '18px',
+    marginBottom: '18px',
     textAlign: 'center',
     color: '#ffffff',
     fontWeight: '700',
@@ -43,10 +43,10 @@ const JobDescription = ({ onJobDescriptionChange }) => {
 
   const textareaStyle = {
     width: '100%',
-    minHeight: '200px',
-    padding: '18px',
-    fontSize: '15px',
-    borderRadius: '12px',
+    minHeight: '180px',
+    padding: '14px',
+    fontSize: '14px',
+    borderRadius: '10px',
     border: '1px solid rgba(255, 255, 255, 0.2)',
     resize: 'vertical',
     background: 'rgba(255, 255, 255, 0.15)',
@@ -66,22 +66,22 @@ const JobDescription = ({ onJobDescriptionChange }) => {
         position: 'absolute',
         top: 0,
         right: 0,
-        width: '120px',
-        height: '120px',
+        width: '90px',
+        height: '90px',
         background: 'radial-gradient(circle, rgba(0, 214, 255, 0.2) 0%, transparent 70%)',
         borderRadius: '0 20px 0 100%'
       }} />
       
       <h2 style={headingStyle}>
         <span style={{
-          width: '45px',
-          height: '45px',
-          borderRadius: '12px',
+          width: '36px',
+          height: '36px',
+          borderRadius: '10px',
           background: 'linear-gradient(135deg, rgba(0, 214, 255, 0.3), rgba(138, 43, 226, 0.3))',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontSize: '24px',
+          fontSize: '18px',
           boxShadow: '0 4px 15px rgba(0, 214, 255, 0.3)'
         }}>📋</span>
         <span>Job Description</span>
