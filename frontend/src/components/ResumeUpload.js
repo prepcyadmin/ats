@@ -22,8 +22,8 @@ const ResumeUpload = ({ onFileChange }) => {
 
   const containerStyle = {
     width: '100%',
-    padding: isMobile ? '10px' : '25px',
-    borderRadius: isMobile ? '8px' : '16px',
+    padding: isMobile ? '10px' : '15px',
+    borderRadius: isMobile ? '8px' : '12px',
     background: 'linear-gradient(135deg, rgba(0, 255, 127, 0.12) 0%, rgba(0, 214, 255, 0.08) 100%)',
     boxShadow: '0 8px 32px rgba(0, 255, 127, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1) inset',
     backdropFilter: 'blur(10px)',
@@ -40,8 +40,8 @@ const ResumeUpload = ({ onFileChange }) => {
   };
 
   const headingStyle = {
-    fontSize: isMobile ? '12px' : '18px',
-    marginBottom: isMobile ? '8px' : '18px',
+    fontSize: isMobile ? '12px' : '16px',
+    marginBottom: isMobile ? '8px' : '12px',
     textAlign: 'center',
     color: '#ffffff',
     fontWeight: '700',
@@ -59,8 +59,8 @@ const ResumeUpload = ({ onFileChange }) => {
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-    gap: isMobile ? '8px' : '20px',
-    minHeight: isMobile ? '100px' : '200px'
+    gap: isMobile ? '8px' : '15px',
+    minHeight: isMobile ? '100px' : '160px'
   };
 
   const uploadButtonStyle = {

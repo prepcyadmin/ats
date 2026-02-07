@@ -19,8 +19,8 @@ const JobDescription = ({ onJobDescriptionChange }) => {
 
   const containerStyle = {
     width: '100%',
-    padding: isMobile ? '10px' : '25px',
-    borderRadius: isMobile ? '8px' : '16px',
+    padding: isMobile ? '10px' : '15px',
+    borderRadius: isMobile ? '8px' : '12px',
     background: 'linear-gradient(135deg, rgba(0, 214, 255, 0.12) 0%, rgba(138, 43, 226, 0.08) 100%)',
     boxShadow: '0 8px 32px rgba(0, 214, 255, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1) inset',
     backdropFilter: 'blur(10px)',
@@ -37,8 +37,8 @@ const JobDescription = ({ onJobDescriptionChange }) => {
   };
 
   const headingStyle = {
-    fontSize: isMobile ? '12px' : '18px',
-    marginBottom: isMobile ? '8px' : '18px',
+    fontSize: isMobile ? '12px' : '16px',
+    marginBottom: isMobile ? '8px' : '12px',
     textAlign: 'center',
     color: '#ffffff',
     fontWeight: '700',
@@ -52,10 +52,10 @@ const JobDescription = ({ onJobDescriptionChange }) => {
 
   const textareaStyle = {
     width: '100%',
-    minHeight: isMobile ? '100px' : '180px',
-    padding: isMobile ? '8px' : '14px',
+    minHeight: isMobile ? '100px' : '140px',
+    padding: isMobile ? '8px' : '12px',
     fontSize: isMobile ? '11px' : '14px',
-    borderRadius: isMobile ? '6px' : '10px',
+    borderRadius: isMobile ? '6px' : '8px',
     border: '1px solid rgba(255, 255, 255, 0.2)',
     resize: 'vertical',
     background: 'rgba(255, 255, 255, 0.15)',

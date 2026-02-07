@@ -233,8 +233,8 @@ function App() {
       <div style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-        gap: isMobile ? '8px' : '20px',
-        maxWidth: isMobile ? '100%' : '1100px',
+        gap: isMobile ? '12px' : '35px',
+        maxWidth: isMobile ? '100%' : '900px',
         margin: isMobile ? '0 auto 12px' : '0 auto 30px',
         width: '100%',
         padding: isMobile ? '0 8px' : '0 20px',
