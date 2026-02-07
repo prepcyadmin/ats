@@ -645,8 +645,8 @@ const ResultPage = ({ result, onReset }) => {
 
     const containerStyle = {
         maxWidth: '1400px',
-        margin: isMobile ? '10px auto' : '30px auto',
-        padding: isMobile ? '10px' : '20px',
+        margin: isMobile ? '5px auto' : '30px auto',
+        padding: isMobile ? '8px' : '20px',
         fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif',
         width: '100%',
         boxSizing: 'border-box',
@@ -657,8 +657,8 @@ const ResultPage = ({ result, onReset }) => {
         background: 'rgba(255, 255, 255, 0.15)',
         backdropFilter: 'blur(15px)',
         WebkitBackdropFilter: 'blur(15px)',
-        borderRadius: isMobile ? '10px' : '15px',
-        padding: isMobile ? '15px' : '25px',
+        borderRadius: isMobile ? '8px' : '15px',
+        padding: isMobile ? '10px' : '25px',
         boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.2)',
         border: '1px solid rgba(255, 255, 255, 0.18)',
         color: '#fff',
@@ -667,54 +667,55 @@ const ResultPage = ({ result, onReset }) => {
     };
 
     const panelHeader = {
-        fontSize: isMobile ? '16px' : '20px',
+        fontSize: isMobile ? '12px' : '20px',
         fontWeight: 'bold',
-        marginBottom: isMobile ? '15px' : '20px',
-        paddingBottom: '10px',
+        marginBottom: isMobile ? '8px' : '20px',
+        paddingBottom: isMobile ? '6px' : '10px',
         borderBottom: '2px solid rgba(255, 255, 255, 0.3)',
         display: 'flex',
         alignItems: 'center',
-        gap: '10px',
+        gap: isMobile ? '6px' : '10px',
         flexWrap: isMobile ? 'wrap' : 'nowrap'
     };
 
     const recommendationCard = {
         background: 'rgba(255, 255, 255, 0.1)',
-        borderRadius: isMobile ? '8px' : '10px',
-        padding: isMobile ? '12px' : '15px',
-        marginBottom: isMobile ? '12px' : '15px',
-        borderLeft: '4px solid',
+        borderRadius: isMobile ? '6px' : '10px',
+        padding: isMobile ? '8px' : '15px',
+        marginBottom: isMobile ? '8px' : '15px',
+        borderLeft: isMobile ? '3px solid' : '4px solid',
     };
 
     const drawbackCard = {
         background: 'rgba(255, 99, 132, 0.2)',
-        borderRadius: isMobile ? '8px' : '10px',
-        padding: isMobile ? '12px' : '15px',
-        marginBottom: isMobile ? '12px' : '15px',
-        borderLeft: '4px solid #ff6384',
+        borderRadius: isMobile ? '6px' : '10px',
+        padding: isMobile ? '8px' : '15px',
+        marginBottom: isMobile ? '8px' : '15px',
+        borderLeft: isMobile ? '3px solid #ff6384' : '4px solid #ff6384',
     };
 
     const boostTipCard = {
         background: 'rgba(0, 255, 127, 0.2)',
-        borderRadius: isMobile ? '8px' : '10px',
-        padding: isMobile ? '12px' : '15px',
-        marginBottom: isMobile ? '12px' : '15px',
-        borderLeft: '4px solid #00ff7f',
+        borderRadius: isMobile ? '6px' : '10px',
+        padding: isMobile ? '8px' : '15px',
+        marginBottom: isMobile ? '8px' : '15px',
+        borderLeft: isMobile ? '3px solid #00ff7f' : '4px solid #00ff7f',
     };
 
     return (
         <div style={containerStyle}>
             {/* Header */}
-            <div style={{ ...panelStyle, marginBottom: isMobile ? '15px' : '20px', textAlign: 'center' }}>
+            <div style={{ ...panelStyle, marginBottom: isMobile ? '10px' : '20px', textAlign: 'center' }}>
                 <h1 style={{ 
-                    margin: '0 0 20px 0', 
-                    fontSize: isMobile ? '18px' : '28px',
-                    wordBreak: 'break-word'
+                    margin: '0 0 10px 0', 
+                    fontSize: isMobile ? '14px' : '28px',
+                    wordBreak: 'break-word',
+                    lineHeight: isMobile ? '1.3' : '1.4'
                 }}>
-                    📊 AI ATS Scanner - AI Graph Analysis Report
+                    📊 AI ATS Scanner Report
                 </h1>
                 {isMobile && (
-                    <div style={{ fontSize: '12px', color: '#aaa', marginBottom: '15px', wordBreak: 'break-word' }}>
+                    <div style={{ fontSize: '10px', color: '#aaa', marginBottom: '8px', wordBreak: 'break-word' }}>
                         {result.resumeName}
                     </div>
                 )}
@@ -724,10 +725,10 @@ const ResultPage = ({ result, onReset }) => {
             <div style={{
                 display: 'flex',
                 flexDirection: isMobile ? 'column' : 'row',
-                gap: isMobile ? '12px' : '15px',
+                gap: isMobile ? '8px' : '15px',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginBottom: isMobile ? '20px' : '25px',
+                marginBottom: isMobile ? '12px' : '25px',
                 flexWrap: 'wrap'
             }}>
                 <button
@@ -758,14 +759,14 @@ const ResultPage = ({ result, onReset }) => {
                     style={{
                         background: '#00ff7f',
                         color: '#000',
-                        padding: isMobile ? '10px 20px' : '12px 24px',
-                        borderRadius: '8px',
+                        padding: isMobile ? '8px 16px' : '12px 24px',
+                        borderRadius: isMobile ? '6px' : '8px',
                         border: 'none',
                         cursor: 'pointer',
-                        fontSize: isMobile ? '14px' : '16px',
+                        fontSize: isMobile ? '12px' : '16px',
                         fontWeight: 'bold',
                         width: isMobile ? '100%' : 'auto',
-                        maxWidth: isMobile ? '300px' : 'none'
+                        maxWidth: isMobile ? '100%' : 'none'
                     }}
                 >
                     📥 Export PDF Report
@@ -776,14 +777,14 @@ const ResultPage = ({ result, onReset }) => {
                         style={{
                             background: 'transparent',
                             color: '#00ffff',
-                            padding: isMobile ? '10px 20px' : '12px 24px',
-                            borderRadius: '8px',
+                            padding: isMobile ? '8px 16px' : '12px 24px',
+                            borderRadius: isMobile ? '6px' : '8px',
                             border: '2px solid #00ffff',
                             cursor: 'pointer',
-                            fontSize: isMobile ? '14px' : '16px',
+                            fontSize: isMobile ? '12px' : '16px',
                             fontWeight: 'bold',
                             width: isMobile ? '100%' : 'auto',
-                            maxWidth: isMobile ? '300px' : 'none'
+                            maxWidth: isMobile ? '100%' : 'none'
                         }}
                     >
                         Analyze Another Resume
@@ -795,16 +796,16 @@ const ResultPage = ({ result, onReset }) => {
             <div style={{
                 display: 'grid',
                 gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-                gap: isMobile ? '20px' : '30px',
-                marginBottom: isMobile ? '25px' : '35px',
+                        gap: isMobile ? '8px' : '30px',
+                        marginBottom: isMobile ? '10px' : '35px',
                 width: '100%'
             }}>
                 {/* ATS Readability Speedometer - Professional Card */}
                 <div style={{
                     background: 'linear-gradient(135deg, rgba(0, 255, 127, 0.12) 0%, rgba(0, 214, 255, 0.08) 100%)',
                     border: '1px solid rgba(0, 255, 127, 0.3)',
-                    borderRadius: '20px',
-                    padding: isMobile ? '25px 20px' : '35px 30px',
+                    borderRadius: isMobile ? '8px' : '20px',
+                    padding: isMobile ? '10px' : '35px 30px',
                     textAlign: 'center',
                     boxShadow: '0 8px 32px rgba(0, 255, 127, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1) inset',
                     backdropFilter: 'blur(10px)',
@@ -813,93 +814,112 @@ const ResultPage = ({ result, onReset }) => {
                     overflow: 'hidden',
                     transition: 'all 0.3s ease'
                 }}>
-                    {/* Decorative corner accent */}
-                    <div style={{
-                        position: 'absolute',
-                        top: 0,
-                        right: 0,
-                        width: '100px',
-                        height: '100px',
-                        background: 'radial-gradient(circle, rgba(0, 255, 127, 0.2) 0%, transparent 70%)',
-                        borderRadius: '0 20px 0 100%'
-                    }} />
+                    {/* Decorative corner accent - Hidden on mobile */}
+                    {!isMobile && (
+                        <div style={{
+                            position: 'absolute',
+                            top: 0,
+                            right: 0,
+                            width: '100px',
+                            height: '100px',
+                            background: 'radial-gradient(circle, rgba(0, 255, 127, 0.2) 0%, transparent 70%)',
+                            borderRadius: '0 20px 0 100%'
+                        }} />
+                    )}
                     
                     {/* Header */}
                     <div style={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        gap: '10px',
-                        marginBottom: isMobile ? '20px' : '25px'
+                        gap: isMobile ? '6px' : '10px',
+                        marginBottom: isMobile ? '6px' : '25px'
                     }}>
                         <div style={{
-                            width: '40px',
-                            height: '40px',
-                            borderRadius: '12px',
+                            width: isMobile ? '28px' : '40px',
+                            height: isMobile ? '28px' : '40px',
+                            borderRadius: isMobile ? '8px' : '12px',
                             background: 'linear-gradient(135deg, rgba(0, 255, 127, 0.3), rgba(0, 214, 255, 0.3))',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            fontSize: '20px',
+                            fontSize: isMobile ? '14px' : '20px',
                             boxShadow: '0 4px 15px rgba(0, 255, 127, 0.3)'
                         }}>
                             ✅
                         </div>
                         <div>
                             <div style={{
-                                fontSize: isMobile ? '16px' : '20px',
+                                fontSize: isMobile ? '12px' : '20px',
                                 fontWeight: '700',
                                 color: '#ffffff',
-                                letterSpacing: '0.5px',
+                                letterSpacing: isMobile ? '0.2px' : '0.5px',
                                 textShadow: '0 2px 10px rgba(0, 255, 127, 0.5)'
                             }}>
                                 ATS Readability
                             </div>
-                            <div style={{
-                                fontSize: isMobile ? '11px' : '12px',
-                                color: 'rgba(255, 255, 255, 0.7)',
-                                marginTop: '4px',
-                                fontWeight: '500'
-                            }}>
-                                Resume Structure & Format
-                            </div>
+                            {!isMobile && (
+                                <div style={{
+                                    fontSize: '12px',
+                                    color: 'rgba(255, 255, 255, 0.7)',
+                                    marginTop: '4px',
+                                    fontWeight: '500'
+                                }}>
+                                    Resume Structure & Format
+                                </div>
+                            )}
                         </div>
                     </div>
                     
-                    {/* Speedometer */}
-                    <div style={{ margin: isMobile ? '15px 0' : '20px 0' }}>
+                    {/* Speedometer - Smaller on mobile */}
+                    <div style={{ margin: isMobile ? '8px 0' : '20px 0' }}>
                         <SpeedometerGauge 
                             value={atsReadabilityScore}
                             color={atsReadabilityScore >= 80 ? '#00ff7f' : atsReadabilityScore >= 60 ? '#FFA500' : '#ff6384'}
-                            size={isMobile ? 160 : 180}
+                            size={isMobile ? 100 : 180}
                         />
                     </div>
                     
-                    {/* Footer info */}
-                    <div style={{
-                        marginTop: isMobile ? '15px' : '20px',
-                        padding: isMobile ? '12px' : '15px',
-                        background: 'rgba(0, 0, 0, 0.2)',
-                        borderRadius: '12px',
-                        border: '1px solid rgba(255, 255, 255, 0.1)'
-                    }}>
-                        <div style={{ 
-                            fontSize: isMobile ? '11px' : '12px', 
-                            color: 'rgba(255, 255, 255, 0.8)',
-                            lineHeight: '1.6',
-                            fontWeight: '500'
+                    {/* Score Display - Mobile */}
+                    {isMobile && (
+                        <div style={{
+                            fontSize: '32px',
+                            fontWeight: 'bold',
+                            color: atsReadabilityScore >= 80 ? '#00ff7f' : atsReadabilityScore >= 60 ? '#FFA500' : '#ff6384',
+                            marginTop: '8px',
+                            textAlign: 'center'
                         }}>
-                            Measures resume formatting, structure completeness, and ATS system compatibility
+                            {atsReadabilityScore}%
                         </div>
-                    </div>
+                    )}
+                    
+                    {/* Footer info - Hidden on mobile */}
+                    {!isMobile && (
+                        <div style={{
+                            marginTop: '20px',
+                            padding: '15px',
+                            background: 'rgba(0, 0, 0, 0.2)',
+                            borderRadius: '12px',
+                            border: '1px solid rgba(255, 255, 255, 0.1)'
+                        }}>
+                            <div style={{ 
+                                fontSize: '12px', 
+                                color: 'rgba(255, 255, 255, 0.8)',
+                                lineHeight: '1.6',
+                                fontWeight: '500'
+                            }}>
+                                Measures resume formatting, structure completeness, and ATS system compatibility
+                            </div>
+                        </div>
+                    )}
                 </div>
 
                 {/* JD Match Score Speedometer - Professional Card */}
                 <div style={{
                     background: 'linear-gradient(135deg, rgba(0, 214, 255, 0.12) 0%, rgba(138, 43, 226, 0.08) 100%)',
                     border: '1px solid rgba(0, 214, 255, 0.3)',
-                    borderRadius: '20px',
-                    padding: isMobile ? '25px 20px' : '35px 30px',
+                    borderRadius: isMobile ? '8px' : '20px',
+                    padding: isMobile ? '10px' : '35px 30px',
                     textAlign: 'center',
                     boxShadow: '0 8px 32px rgba(0, 214, 255, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1) inset',
                     backdropFilter: 'blur(10px)',
@@ -908,85 +928,104 @@ const ResultPage = ({ result, onReset }) => {
                     overflow: 'hidden',
                     transition: 'all 0.3s ease'
                 }}>
-                    {/* Decorative corner accent */}
-                    <div style={{
-                        position: 'absolute',
-                        top: 0,
-                        right: 0,
-                        width: '100px',
-                        height: '100px',
-                        background: 'radial-gradient(circle, rgba(0, 214, 255, 0.2) 0%, transparent 70%)',
-                        borderRadius: '0 20px 0 100%'
-                    }} />
+                    {/* Decorative corner accent - Hidden on mobile */}
+                    {!isMobile && (
+                        <div style={{
+                            position: 'absolute',
+                            top: 0,
+                            right: 0,
+                            width: '100px',
+                            height: '100px',
+                            background: 'radial-gradient(circle, rgba(0, 214, 255, 0.2) 0%, transparent 70%)',
+                            borderRadius: '0 20px 0 100%'
+                        }} />
+                    )}
                     
                     {/* Header */}
                     <div style={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        gap: '10px',
-                        marginBottom: isMobile ? '20px' : '25px'
+                        gap: isMobile ? '6px' : '10px',
+                        marginBottom: isMobile ? '6px' : '25px'
                     }}>
                         <div style={{
-                            width: '40px',
-                            height: '40px',
-                            borderRadius: '12px',
+                            width: isMobile ? '28px' : '40px',
+                            height: isMobile ? '28px' : '40px',
+                            borderRadius: isMobile ? '8px' : '12px',
                             background: 'linear-gradient(135deg, rgba(0, 214, 255, 0.3), rgba(138, 43, 226, 0.3))',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            fontSize: '20px',
+                            fontSize: isMobile ? '14px' : '20px',
                             boxShadow: '0 4px 15px rgba(0, 214, 255, 0.3)'
                         }}>
                             🎯
                         </div>
                         <div>
                             <div style={{
-                                fontSize: isMobile ? '16px' : '20px',
+                                fontSize: isMobile ? '12px' : '20px',
                                 fontWeight: '700',
                                 color: '#ffffff',
-                                letterSpacing: '0.5px',
+                                letterSpacing: isMobile ? '0.2px' : '0.5px',
                                 textShadow: '0 2px 10px rgba(0, 214, 255, 0.5)'
                             }}>
                                 JD Match Score
                             </div>
-                            <div style={{
-                                fontSize: isMobile ? '11px' : '12px',
-                                color: 'rgba(255, 255, 255, 0.7)',
-                                marginTop: '4px',
-                                fontWeight: '500'
-                            }}>
-                                Job Description Alignment
-                            </div>
+                            {!isMobile && (
+                                <div style={{
+                                    fontSize: '12px',
+                                    color: 'rgba(255, 255, 255, 0.7)',
+                                    marginTop: '4px',
+                                    fontWeight: '500'
+                                }}>
+                                    Job Description Alignment
+                                </div>
+                            )}
                         </div>
                     </div>
                     
-                    {/* Speedometer */}
-                    <div style={{ margin: isMobile ? '15px 0' : '20px 0' }}>
+                    {/* Speedometer - Smaller on mobile */}
+                    <div style={{ margin: isMobile ? '8px 0' : '20px 0' }}>
                         <SpeedometerGauge 
                             value={jdMatchScore}
                             color={jdMatchScore >= 80 ? '#00ff7f' : jdMatchScore >= 60 ? '#FFA500' : '#ff6384'}
-                            size={isMobile ? 160 : 180}
+                            size={isMobile ? 100 : 180}
                         />
                     </div>
                     
-                    {/* Footer info */}
-                    <div style={{
-                        marginTop: isMobile ? '15px' : '20px',
-                        padding: isMobile ? '12px' : '15px',
-                        background: 'rgba(0, 0, 0, 0.2)',
-                        borderRadius: '12px',
-                        border: '1px solid rgba(255, 255, 255, 0.1)'
-                    }}>
-                        <div style={{ 
-                            fontSize: isMobile ? '11px' : '12px', 
-                            color: 'rgba(255, 255, 255, 0.8)',
-                            lineHeight: '1.6',
-                            fontWeight: '500'
+                    {/* Score Display - Mobile */}
+                    {isMobile && (
+                        <div style={{
+                            fontSize: '32px',
+                            fontWeight: 'bold',
+                            color: jdMatchScore >= 80 ? '#00ff7f' : jdMatchScore >= 60 ? '#FFA500' : '#ff6384',
+                            marginTop: '8px',
+                            textAlign: 'center'
                         }}>
-                            Analyzes how well your resume matches the job description requirements
+                            {jdMatchScore}%
                         </div>
-                    </div>
+                    )}
+                    
+                    {/* Footer info - Hidden on mobile */}
+                    {!isMobile && (
+                        <div style={{
+                            marginTop: '20px',
+                            padding: '15px',
+                            background: 'rgba(0, 0, 0, 0.2)',
+                            borderRadius: '12px',
+                            border: '1px solid rgba(255, 255, 255, 0.1)'
+                        }}>
+                            <div style={{ 
+                                fontSize: '12px', 
+                                color: 'rgba(255, 255, 255, 0.8)',
+                                lineHeight: '1.6',
+                                fontWeight: '500'
+                            }}>
+                                Analyzes how well your resume matches the job description requirements
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -994,33 +1033,33 @@ const ResultPage = ({ result, onReset }) => {
             <div style={{
                 display: 'grid',
                 gridTemplateColumns: (isMobile || isTablet) ? '1fr' : '1fr 1fr',
-                gap: isMobile ? '15px' : '20px',
+                gap: isMobile ? '8px' : '20px',
                 width: '100%',
                 boxSizing: 'border-box'
             }}>
                 {/* LEFT COLUMN: Reports & Charts */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                    {/* ATS Best Practices Section Scores */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '8px' : '20px' }}>
+                    {/* ATS Best Practices Section Scores - Simplified on mobile */}
                     {result.atsBestPractices && (
                         <div style={panelStyle}>
                             <div style={panelHeader}>
-                                <span>✅ ATS Best Practices Analysis</span>
+                                <span>✅ ATS Best Practices</span>
                             </div>
-                            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', gap: '10px', marginBottom: '15px' }}>
+                            <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(2, 1fr)', gap: isMobile ? '6px' : '10px', marginBottom: isMobile ? '8px' : '15px' }}>
                                 {result.atsBestPractices.summary && Object.entries(result.atsBestPractices.summary).map(([key, score]) => {
                                     const sectionName = key.replace('Score', '').replace(/([A-Z])/g, ' $1').trim();
                                     return (
                                         <div key={key} style={{
-                                            padding: '10px',
+                                            padding: isMobile ? '6px' : '10px',
                                             background: score >= 80 ? 'rgba(0, 255, 127, 0.2)' : score >= 60 ? 'rgba(255, 165, 0, 0.2)' : 'rgba(255, 99, 132, 0.2)',
-                                            borderRadius: '8px',
+                                            borderRadius: isMobile ? '6px' : '8px',
                                             textAlign: 'center'
                                         }}>
-                                            <div style={{ fontSize: isMobile ? '11px' : '12px', color: '#ccc', marginBottom: '5px' }}>
-                                                {sectionName}
+                                            <div style={{ fontSize: isMobile ? '9px' : '12px', color: '#ccc', marginBottom: isMobile ? '3px' : '5px' }}>
+                                                {isMobile ? sectionName.split(' ')[0] : sectionName}
                                             </div>
                                             <div style={{ 
-                                                fontSize: isMobile ? '18px' : '24px', 
+                                                fontSize: isMobile ? '14px' : '24px', 
                                                 fontWeight: 'bold',
                                                 color: score >= 80 ? '#00ff7f' : score >= 60 ? '#FFA500' : '#ff6384'
                                             }}>
@@ -1043,18 +1082,20 @@ const ResultPage = ({ result, onReset }) => {
                         </div>
                     )}
                     
-                    <div style={panelStyle}>
-                        <div style={panelHeader}>
-                            <span>📈 JD Match Breakdown</span>
-                        </div>
-                        <Bar 
-                            data={scoreBreakdownData}
-                            key={`bar-score-${result.resumeName}`}
-                            redraw={true}
-                            options={{
-                                responsive: true,
-                                maintainAspectRatio: !isMobile,
-                                aspectRatio: isMobile ? 1.5 : 2,
+                    {/* Hide charts on mobile to prevent crashes */}
+                    {!isMobile && (
+                        <div style={panelStyle}>
+                            <div style={panelHeader}>
+                                <span>📈 JD Match Breakdown</span>
+                            </div>
+                            <Bar 
+                                data={scoreBreakdownData}
+                                key={`bar-score-${result.resumeName}`}
+                                redraw={true}
+                                options={{
+                                    responsive: true,
+                                    maintainAspectRatio: true,
+                                    aspectRatio: 2,
                                 plugins: {
                                     legend: { display: false },
                                     tooltip: {
@@ -1084,20 +1125,23 @@ const ResultPage = ({ result, onReset }) => {
                                 }
                             }}
                         />
-                    </div>
-
-                    <div style={panelStyle}>
-                        <div style={panelHeader}>
-                            <span>🎯 AI Similarity Analysis</span>
                         </div>
-                        <Radar 
-                            data={similarityComparisonData} 
-                            key={`radar-similarity-${result.resumeName}`}
-                            redraw={true}
-                            options={{
-                                responsive: true,
-                                maintainAspectRatio: !isMobile,
-                                aspectRatio: isMobile ? 1 : 1.5,
+                    )}
+
+                    {/* Hide radar chart on mobile */}
+                    {!isMobile && (
+                        <div style={panelStyle}>
+                            <div style={panelHeader}>
+                                <span>🎯 AI Similarity Analysis</span>
+                            </div>
+                            <Radar 
+                                data={similarityComparisonData} 
+                                key={`radar-similarity-${result.resumeName}`}
+                                redraw={true}
+                                options={{
+                                    responsive: true,
+                                    maintainAspectRatio: true,
+                                    aspectRatio: 1.5,
                                 plugins: {
                                     legend: {
                                         labels: { color: '#fff' }
@@ -1131,15 +1175,16 @@ const ResultPage = ({ result, onReset }) => {
                                 }
                             }}
                         />
-                    </div>
+                        </div>
+                    )}
 
-                    {/* Required Skills Match - Always show if we have any skills data */}
+                    {/* Required Skills Match - Simplified on mobile */}
                     {(topSkillsToShow.length > 0 || result.skillsMatch || result.technicalMatch) && (
                         <div style={panelStyle}>
                             <div style={panelHeader}>
-                                <span>🛠️ Required Skills Match</span>
+                                <span>🛠️ Skills Match</span>
                             </div>
-                            {topSkillsToShow.length > 0 ? (
+                            {!isMobile && topSkillsToShow.length > 0 ? (
                                 <Bar 
                                     data={skillsMatchData}
                                     key={`bar-skills-${result.resumeName}`}
@@ -1147,8 +1192,8 @@ const ResultPage = ({ result, onReset }) => {
                                     options={{
                                         indexAxis: 'y',
                                         responsive: true,
-                                        maintainAspectRatio: !isMobile,
-                                        aspectRatio: isMobile ? 1.2 : Math.max(1.5, topSkillsToShow.length * 0.15),
+                                        maintainAspectRatio: true,
+                                        aspectRatio: Math.max(1.5, topSkillsToShow.length * 0.15),
                                         plugins: {
                                             legend: { display: false },
                                             tooltip: {
@@ -1178,7 +1223,7 @@ const ResultPage = ({ result, onReset }) => {
                                             y: {
                                                 ticks: { 
                                                     color: '#fff',
-                                                    font: { size: isMobile ? 10 : 12 }
+                                                    font: { size: 12 }
                                                 },
                                                 grid: { color: 'rgba(255, 255, 255, 0.1)' }
                                             }
@@ -1186,20 +1231,53 @@ const ResultPage = ({ result, onReset }) => {
                                     }}
                                 />
                             ) : (
-                                <div style={{ padding: '20px', textAlign: 'center', color: '#ccc' }}>
-                                    <p>No skills data available for matching.</p>
-                                    {result.skillsMatch && (
-                                        <div style={{ marginTop: '10px', fontSize: '12px' }}>
-                                            Matched: {skillsMatch.matched || 0} / Total: {skillsMatch.totalRequired || 0}
+                                <div style={{ padding: isMobile ? '10px' : '20px', textAlign: 'center', color: '#ccc' }}>
+                                    {isMobile ? (
+                                        <div style={{ fontSize: '10px' }}>
+                                            {result.skillsMatch ? (
+                                                <div>
+                                                    <div style={{ fontSize: '14px', fontWeight: 'bold', marginBottom: '5px' }}>
+                                                        {skillsMatch.matched || 0} / {skillsMatch.totalRequired || 0} Skills
+                                                    </div>
+                                                    {topSkillsToShow.length > 0 && (
+                                                        <div style={{ fontSize: '9px', marginTop: '8px', textAlign: 'left' }}>
+                                                            {topSkillsToShow.slice(0, 5).map((skill, idx) => {
+                                                                const skillStr = typeof skill === 'string' ? skill : (skill.term || skill.name || String(skill));
+                                                                const isMatched = matchingSkills.some(ms => {
+                                                                    const msStr = typeof ms === 'string' ? ms : String(ms);
+                                                                    return msStr.toLowerCase().includes(skillStr.toLowerCase()) || 
+                                                                           skillStr.toLowerCase().includes(msStr.toLowerCase());
+                                                                });
+                                                                return (
+                                                                    <div key={idx} style={{ marginBottom: '4px', color: isMatched ? '#00ff7f' : '#ff6384' }}>
+                                                                        {isMatched ? '✓' : '✗'} {skillStr.length > 20 ? skillStr.substring(0, 20) + '...' : skillStr}
+                                                                    </div>
+                                                                );
+                                                            })}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            ) : (
+                                                <p style={{ fontSize: '10px' }}>No skills data</p>
+                                            )}
                                         </div>
+                                    ) : (
+                                        <>
+                                            <p>No skills data available for matching.</p>
+                                            {result.skillsMatch && (
+                                                <div style={{ marginTop: '10px', fontSize: '12px' }}>
+                                                    Matched: {skillsMatch.matched || 0} / Total: {skillsMatch.totalRequired || 0}
+                                                </div>
+                                            )}
+                                        </>
                                     )}
                                 </div>
                             )}
                         </div>
                     )}
 
-                    {/* ATS Score Breakdown */}
-                    {result.atsBestPractices && (
+                    {/* ATS Score Breakdown - Hide on mobile */}
+                    {!isMobile && result.atsBestPractices && (
                         <div style={panelStyle}>
                             <div style={panelHeader}>
                                 <span>✅ ATS Score Breakdown</span>
@@ -1210,8 +1288,8 @@ const ResultPage = ({ result, onReset }) => {
                                 redraw={true}
                                 options={{
                                     responsive: true,
-                                    maintainAspectRatio: !isMobile,
-                                    aspectRatio: isMobile ? 1.5 : 2,
+                                    maintainAspectRatio: true,
+                                    aspectRatio: 2,
                                     plugins: {
                                         legend: { display: false },
                                         tooltip: {
@@ -1244,88 +1322,90 @@ const ResultPage = ({ result, onReset }) => {
                         </div>
                     )}
 
-                    {/* Score Comparison - Side by Side (Not a distribution) */}
-                    <div style={panelStyle}>
-                        <div style={panelHeader}>
-                            <span>📊 Score Comparison</span>
-                        </div>
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-                            gap: '15px',
-                            marginTop: '15px'
-                        }}>
-                            {/* JD Match Score Card */}
+                    {/* Score Comparison - Hidden on mobile (already shown in speedometers) */}
+                    {!isMobile && (
+                        <div style={panelStyle}>
+                            <div style={panelHeader}>
+                                <span>📊 Score Comparison</span>
+                            </div>
                             <div style={{
-                                padding: '20px',
-                                background: 'rgba(0, 214, 255, 0.2)',
-                                borderRadius: '12px',
-                                border: '2px solid rgba(0, 214, 255, 0.4)',
-                                textAlign: 'center'
+                                display: 'grid',
+                                gridTemplateColumns: '1fr 1fr',
+                                gap: '15px',
+                                marginTop: '15px'
                             }}>
-                                <div style={{ fontSize: isMobile ? '12px' : '14px', color: '#00d2ff', marginBottom: '10px' }}>
-                                    🎯 JD Match Score
-                                </div>
+                                {/* JD Match Score Card */}
                                 <div style={{
-                                    fontSize: isMobile ? '36px' : '48px',
-                                    fontWeight: 'bold',
-                                    color: jdMatchScore >= 80 ? '#00ff7f' : jdMatchScore >= 60 ? '#FFA500' : '#ff6384',
-                                    marginBottom: '5px'
+                                    padding: '20px',
+                                    background: 'rgba(0, 214, 255, 0.2)',
+                                    borderRadius: '12px',
+                                    border: '2px solid rgba(0, 214, 255, 0.4)',
+                                    textAlign: 'center'
                                 }}>
-                                    {jdMatchScore}%
+                                    <div style={{ fontSize: '14px', color: '#00d2ff', marginBottom: '10px' }}>
+                                        🎯 JD Match Score
+                                    </div>
+                                    <div style={{
+                                        fontSize: '48px',
+                                        fontWeight: 'bold',
+                                        color: jdMatchScore >= 80 ? '#00ff7f' : jdMatchScore >= 60 ? '#FFA500' : '#ff6384',
+                                        marginBottom: '5px'
+                                    }}>
+                                        {jdMatchScore}%
+                                    </div>
+                                    <div style={{ fontSize: '11px', color: '#ccc' }}>
+                                        Job Description Match
+                                    </div>
                                 </div>
-                                <div style={{ fontSize: isMobile ? '10px' : '11px', color: '#ccc' }}>
-                                    Job Description Match
+
+                                {/* ATS Readability Score Card */}
+                                <div style={{
+                                    padding: '20px',
+                                    background: 'rgba(0, 255, 127, 0.2)',
+                                    borderRadius: '12px',
+                                    border: '2px solid rgba(0, 255, 127, 0.4)',
+                                    textAlign: 'center'
+                                }}>
+                                    <div style={{ fontSize: '14px', color: '#00ff7f', marginBottom: '10px' }}>
+                                        ✅ ATS Readability
+                                    </div>
+                                    <div style={{
+                                        fontSize: '48px',
+                                        fontWeight: 'bold',
+                                        color: atsReadabilityScore >= 80 ? '#00ff7f' : atsReadabilityScore >= 60 ? '#FFA500' : '#ff6384',
+                                        marginBottom: '5px'
+                                    }}>
+                                        {atsReadabilityScore}%
+                                    </div>
+                                    <div style={{ fontSize: '11px', color: '#ccc' }}>
+                                        Resume Structure & Format
+                                    </div>
                                 </div>
                             </div>
-
-                            {/* ATS Readability Score Card */}
                             <div style={{
-                                padding: '20px',
-                                background: 'rgba(0, 255, 127, 0.2)',
-                                borderRadius: '12px',
-                                border: '2px solid rgba(0, 255, 127, 0.4)',
+                                marginTop: '15px',
+                                padding: '10px',
+                                background: 'rgba(255, 255, 255, 0.1)',
+                                borderRadius: '8px',
+                                fontSize: '11px',
+                                color: '#d0d0d0',
                                 textAlign: 'center'
                             }}>
-                                <div style={{ fontSize: isMobile ? '12px' : '14px', color: '#00ff7f', marginBottom: '10px' }}>
-                                    ✅ ATS Readability
-                                </div>
-                                <div style={{
-                                    fontSize: isMobile ? '36px' : '48px',
-                                    fontWeight: 'bold',
-                                    color: atsReadabilityScore >= 80 ? '#00ff7f' : atsReadabilityScore >= 60 ? '#FFA500' : '#ff6384',
-                                    marginBottom: '5px'
-                                }}>
-                                    {atsReadabilityScore}%
-                                </div>
-                                <div style={{ fontSize: isMobile ? '10px' : '11px', color: '#ccc' }}>
-                                    Resume Structure & Format
-                                </div>
+                                💡 These are independent scores - not parts of a distribution
                             </div>
                         </div>
-                        <div style={{
-                            marginTop: '15px',
-                            padding: '10px',
-                            background: 'rgba(255, 255, 255, 0.1)',
-                            borderRadius: '8px',
-                            fontSize: isMobile ? '10px' : '11px',
-                            color: '#d0d0d0',
-                            textAlign: 'center'
-                        }}>
-                            💡 These are independent scores - not parts of a distribution
-                        </div>
-                    </div>
+                    )}
 
-                    {/* Technical Match */}
+                    {/* Technical Match - Simplified on mobile */}
                     {result.technicalMatch && (
                         <div style={panelStyle}>
                             <div style={panelHeader}>
-                                <span>⚙️ Technical Requirements</span>
-                                <span style={{ marginLeft: 'auto', fontSize: '24px', fontWeight: 'bold', color: result.technicalMatch.score >= 70 ? '#00ff7f' : '#ff6384' }}>
+                                <span>⚙️ Technical Match</span>
+                                <span style={{ marginLeft: 'auto', fontSize: isMobile ? '16px' : '24px', fontWeight: 'bold', color: result.technicalMatch.score >= 70 ? '#00ff7f' : '#ff6384' }}>
                                     {result.technicalMatch.score}%
                                 </span>
                             </div>
-                                {result.technicalMatch.matches && Object.entries(result.technicalMatch.matches).slice(0, 3).map(([category, match]) => (
+                                {result.technicalMatch.matches && Object.entries(result.technicalMatch.matches).slice(0, isMobile ? 2 : 3).map(([category, match]) => (
                                 <div key={category} style={{ 
                                     marginBottom: isMobile ? '12px' : '15px', 
                                     padding: isMobile ? '8px' : '10px', 
@@ -1362,14 +1442,14 @@ const ResultPage = ({ result, onReset }) => {
                 </div>
 
                 {/* RIGHT COLUMN: Recommendations & Improvements */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                    {/* Recommendations Panel */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '8px' : '20px' }}>
+                    {/* Recommendations Panel - Limit on mobile */}
                     <div style={panelStyle}>
                         <div style={panelHeader}>
                             <span>💡 Recommendations</span>
                         </div>
                         <div style={{ /* Removed maxHeight and overflowY - show all recommendations */ }}>
-                            {allRecommendations.map((rec, idx) => {
+                            {allRecommendations.slice(0, isMobile ? 3 : allRecommendations.length).map((rec, idx) => {
                                 // Safely extract string values from recommendation object
                                 const getStringValue = (value) => {
                                     if (!value) return '';
@@ -1584,13 +1664,13 @@ const ResultPage = ({ result, onReset }) => {
                         </div>
                     </div>
 
-                    {/* Drawbacks Panel */}
+                    {/* Drawbacks Panel - Limit on mobile */}
                     <div style={panelStyle}>
                         <div style={panelHeader}>
-                            <span>⚠️ Drawbacks & Issues</span>
+                            <span>⚠️ Drawbacks</span>
                         </div>
                         <div style={{ /* Show all drawbacks - no scroll limit */ }}>
-                            {drawbacks.map((drawback, idx) => (
+                            {drawbacks.slice(0, isMobile ? 2 : drawbacks.length).map((drawback, idx) => (
                                 <div key={idx} style={drawbackCard}>
                                     <div style={{ 
                                         display: 'flex', 
@@ -1639,13 +1719,13 @@ const ResultPage = ({ result, onReset }) => {
                         </div>
                     </div>
 
-                    {/* Boost ATS Score Panel */}
+                    {/* Boost ATS Score Panel - Limit on mobile */}
                     <div style={panelStyle}>
                         <div style={panelHeader}>
-                            <span>🚀 How to Boost Your ATS Score</span>
+                            <span>🚀 Boost Tips</span>
                         </div>
                         <div style={{ /* Show all boost tips - no scroll limit */ }}>
-                            {boostTips.map((tip, idx) => (
+                            {boostTips.slice(0, isMobile ? 2 : boostTips.length).map((tip, idx) => (
                                 <div key={idx} style={boostTipCard}>
                                     <div style={{ 
                                         display: 'flex', 
