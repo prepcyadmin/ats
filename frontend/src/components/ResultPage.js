@@ -733,8 +733,8 @@ const ResultPage = ({ result, onReset }) => {
                 <button
                     onClick={async () => {
                         try {
-                            const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-                            const response = await fetch(`${API_URL}/api/v1/resumes/export`, {
+                            const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1';
+                            const response = await fetch(`${API_URL}/resumes/export`, {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json',

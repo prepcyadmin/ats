@@ -80,8 +80,8 @@ const AdminDashboard = () => {
 
   const fetchStats = async () => {
     try {
-      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-      const response = await fetch(`${API_URL}/api/v1/admin/stats`);
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1';
+      const response = await fetch(`${API_URL}/admin/stats`);
       const data = await response.json();
       if (data.success) {
         setStats(data.data);
@@ -101,8 +101,8 @@ const AdminDashboard = () => {
       return;
     }
     try {
-      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-      const response = await fetch(`${API_URL}/api/v1/admin/reset`, {
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1';
+      const response = await fetch(`${API_URL}/admin/reset`, {
         method: 'POST'
       });
       const data = await response.json();

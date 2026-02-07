@@ -58,8 +58,8 @@ function App() {
       formData.append('resume', file);
       formData.append('jobDescription', jobDescription);
 
-      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-      const response = await fetch(`${API_URL}/api/v1/resumes/analyze`, {
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1';
+      const response = await fetch(`${API_URL}/resumes/analyze`, {
         method: 'POST',
         body: formData,
       });
