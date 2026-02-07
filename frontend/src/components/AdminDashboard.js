@@ -81,17 +81,29 @@ const AdminDashboard = () => {
 
   const fetchStats = async () => {
     try {
+      setLoading(true);
+      setError(null);
       const API_URL = normalizeApiUrl(process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1');
+      console.log('Fetching admin stats from:', `${API_URL}/admin/stats`);
+      
       const response = await fetch(`${API_URL}/admin/stats`);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
-      if (data.success) {
+      console.log('Admin stats response:', data);
+      
+      if (data.success && data.data) {
         setStats(data.data);
         setLastRefresh(new Date());
       } else {
-        setError(data.error?.message || 'Failed to fetch statistics');
+        setError(data.error?.message || data.message || 'Failed to fetch statistics');
       }
     } catch (err) {
-      setError(err.message);
+      console.error('Error fetching admin stats:', err);
+      setError(err.message || 'Failed to connect to server. Please check if the backend is running.');
     } finally {
       setLoading(false);
     }
@@ -122,7 +134,30 @@ const AdminDashboard = () => {
     return (
       <div style={containerStyle}>
         <div style={{ textAlign: 'center', padding: '50px', color: '#fff' }}>
-          <div style={{ fontSize: '24px', marginBottom: '20px' }}>Loading statistics...</div>
+          <div style={{ 
+            fontSize: '24px', 
+            marginBottom: '20px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '15px'
+          }}>
+            <div style={{
+              width: '30px',
+              height: '30px',
+              border: '4px solid rgba(255, 255, 255, 0.3)',
+              borderTop: '4px solid #fff',
+              borderRadius: '50%',
+              animation: 'spin 1s linear infinite'
+            }} />
+            Loading statistics...
+          </div>
+          <style>{`
+            @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+            }
+          `}</style>
         </div>
       </div>
     );
@@ -131,28 +166,61 @@ const AdminDashboard = () => {
   if (error) {
     return (
       <div style={containerStyle}>
-        <div style={{ textAlign: 'center', padding: '50px', color: '#ff6b6b' }}>
-          <div style={{ fontSize: '24px', marginBottom: '20px' }}>Error: {error}</div>
-          <button onClick={fetchStats} style={buttonStyle}>Retry</button>
+        <div style={{ textAlign: 'center', padding: '50px', color: '#ff6b6b', maxWidth: '600px', margin: '0 auto' }}>
+          <div style={{ fontSize: '24px', marginBottom: '20px', fontWeight: 'bold' }}>⚠️ Error Loading Statistics</div>
+          <div style={{ fontSize: '16px', marginBottom: '30px', color: 'rgba(255, 255, 255, 0.9)' }}>
+            {error}
+          </div>
+          <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button onClick={fetchStats} style={buttonStyle}>🔄 Retry</button>
+            <a 
+              href="/" 
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.hash = '';
+                window.location.reload();
+              }}
+              style={{
+                ...buttonStyle,
+                background: 'linear-gradient(135deg, #667eea, #764ba2)',
+                textDecoration: 'none',
+                display: 'inline-block'
+              }}
+            >
+              ← Back to Home
+            </a>
+          </div>
+          <div style={{ marginTop: '30px', padding: '20px', background: 'rgba(255, 255, 255, 0.1)', borderRadius: '10px', fontSize: '14px', color: 'rgba(255, 255, 255, 0.8)' }}>
+            <strong>Debug Info:</strong><br />
+            API URL: {normalizeApiUrl(process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1')}/admin/stats<br />
+            Make sure the backend server is running and accessible.
+          </div>
         </div>
       </div>
     );
   }
 
   if (!stats) {
-    return null;
+    return (
+      <div style={containerStyle}>
+        <div style={{ textAlign: 'center', padding: '50px', color: '#fff' }}>
+          <div style={{ fontSize: '24px', marginBottom: '20px' }}>No statistics available</div>
+          <button onClick={fetchStats} style={buttonStyle}>🔄 Refresh</button>
+        </div>
+      </div>
+    );
   }
 
-  // Prepare chart data
+  // Prepare chart data with safety checks
   const last30DaysData = {
-    labels: stats.last30Days.map(d => {
+    labels: (stats.last30Days || []).map(d => {
       const date = new Date(d.date);
       return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     }),
     datasets: [
       {
         label: 'Searches',
-        data: stats.last30Days.map(d => d.searches),
+        data: (stats.last30Days || []).map(d => d.searches || 0),
         backgroundColor: 'rgba(0, 255, 127, 0.6)',
         borderColor: '#00ff7f',
         borderWidth: 2,
@@ -161,7 +229,7 @@ const AdminDashboard = () => {
       },
       {
         label: 'Users',
-        data: stats.last30Days.map(d => d.users),
+        data: (stats.last30Days || []).map(d => d.users || 0),
         backgroundColor: 'rgba(0, 214, 255, 0.6)',
         borderColor: '#00d2ff',
         borderWidth: 2,
@@ -172,10 +240,10 @@ const AdminDashboard = () => {
   };
 
   const last24HoursData = {
-    labels: stats.last24Hours.map(d => `${d.hour}:00`),
+    labels: (stats.last24Hours || []).map(d => `${d.hour || 0}:00`),
     datasets: [{
       label: 'Searches per Hour',
-      data: stats.last24Hours.map(d => d.searches),
+      data: (stats.last24Hours || []).map(d => d.searches || 0),
       backgroundColor: 'rgba(138, 43, 226, 0.6)',
       borderColor: '#8a2be2',
       borderWidth: 2,
@@ -185,9 +253,9 @@ const AdminDashboard = () => {
   };
 
   const fileTypesData = {
-    labels: Object.keys(stats.fileTypes),
+    labels: Object.keys(stats.fileTypes || {}),
     datasets: [{
-      data: Object.values(stats.fileTypes),
+      data: Object.values(stats.fileTypes || {}),
       backgroundColor: [
         'rgba(0, 255, 127, 0.8)',
         'rgba(0, 214, 255, 0.8)',
@@ -259,7 +327,7 @@ const AdminDashboard = () => {
           <div style={statCardStyle}>
             <div style={{ fontSize: '48px', marginBottom: '10px' }}>👥</div>
             <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#fff', marginBottom: '5px' }}>
-              {stats.totalUsers.toLocaleString()}
+              {(stats.totalUsers || 0).toLocaleString()}
             </div>
             <div style={{ color: 'rgba(255, 255, 255, 0.8)' }}>Total Users</div>
           </div>
@@ -267,7 +335,7 @@ const AdminDashboard = () => {
           <div style={statCardStyle}>
             <div style={{ fontSize: '48px', marginBottom: '10px' }}>🔍</div>
             <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#fff', marginBottom: '5px' }}>
-              {stats.totalSearches.toLocaleString()}
+              {(stats.totalSearches || 0).toLocaleString()}
             </div>
             <div style={{ color: 'rgba(255, 255, 255, 0.8)' }}>Total Searches</div>
           </div>
@@ -275,7 +343,7 @@ const AdminDashboard = () => {
           <div style={statCardStyle}>
             <div style={{ fontSize: '48px', marginBottom: '10px' }}>✅</div>
             <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#fff', marginBottom: '5px' }}>
-              {stats.averageScores.ats}%
+              {(stats.averageScores?.ats || 0)}%
             </div>
             <div style={{ color: 'rgba(255, 255, 255, 0.8)' }}>Avg ATS Score</div>
           </div>
@@ -283,7 +351,7 @@ const AdminDashboard = () => {
           <div style={statCardStyle}>
             <div style={{ fontSize: '48px', marginBottom: '10px' }}>🎯</div>
             <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#fff', marginBottom: '5px' }}>
-              {stats.averageScores.jd}%
+              {(stats.averageScores?.jd || 0)}%
             </div>
             <div style={{ color: 'rgba(255, 255, 255, 0.8)' }}>Avg JD Match Score</div>
           </div>
