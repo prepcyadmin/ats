@@ -22,8 +22,8 @@ const ResumeUpload = ({ onFileChange }) => {
 
   const containerStyle = {
     width: '100%',
-    padding: isMobile ? '10px' : '15px',
-    borderRadius: isMobile ? '8px' : '12px',
+    padding: isMobile ? '8px' : '15px',
+    borderRadius: isMobile ? '6px' : '12px',
     background: 'linear-gradient(135deg, rgba(0, 255, 127, 0.12) 0%, rgba(0, 214, 255, 0.08) 100%)',
     boxShadow: '0 8px 32px rgba(0, 255, 127, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1) inset',
     backdropFilter: 'blur(10px)',
@@ -40,8 +40,8 @@ const ResumeUpload = ({ onFileChange }) => {
   };
 
   const headingStyle = {
-    fontSize: isMobile ? '12px' : '16px',
-    marginBottom: isMobile ? '8px' : '12px',
+    fontSize: isMobile ? '11px' : '16px',
+    marginBottom: isMobile ? '6px' : '12px',
     textAlign: 'center',
     color: '#ffffff',
     fontWeight: '700',
@@ -59,25 +59,25 @@ const ResumeUpload = ({ onFileChange }) => {
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
-    gap: isMobile ? '8px' : '15px',
-    minHeight: isMobile ? '100px' : '160px'
+    gap: isMobile ? '6px' : '15px',
+    minHeight: isMobile ? '80px' : '160px'
   };
 
   const uploadButtonStyle = {
     background: 'linear-gradient(135deg, #00ff7f 0%, #00d2ff 100%)',
     color: '#000',
-    padding: isMobile ? '8px 12px' : '12px 24px',
-    borderRadius: isMobile ? '6px' : '10px',
+    padding: isMobile ? '6px 10px' : '12px 24px',
+    borderRadius: isMobile ? '5px' : '10px',
     border: 'none',
     cursor: 'pointer',
-    fontSize: isMobile ? '11px' : '14px',
+    fontSize: isMobile ? '10px' : '14px',
     fontWeight: '700',
     transition: 'all 0.3s ease-in-out',
     width: '100%',
     maxWidth: isMobile ? '100%' : '280px',
     textAlign: 'center',
     boxShadow: '0 4px 15px rgba(0, 255, 127, 0.4)',
-    letterSpacing: isMobile ? '0.1px' : '0.3px'
+    letterSpacing: isMobile ? '0.05px' : '0.3px'
   };
 
   const listStyle = {
@@ -108,14 +108,14 @@ const ResumeUpload = ({ onFileChange }) => {
       
       <h2 style={headingStyle}>
         <span style={{
-          width: isMobile ? '24px' : '36px',
-          height: isMobile ? '24px' : '36px',
-          borderRadius: isMobile ? '6px' : '10px',
+          width: isMobile ? '20px' : '36px',
+          height: isMobile ? '20px' : '36px',
+          borderRadius: isMobile ? '5px' : '10px',
           background: 'linear-gradient(135deg, rgba(0, 255, 127, 0.3), rgba(0, 214, 255, 0.3))',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontSize: isMobile ? '12px' : '18px',
+          fontSize: isMobile ? '10px' : '18px',
           boxShadow: '0 4px 15px rgba(0, 255, 127, 0.3)'
         }}>📄</span>
         <span>Upload Resume</span>
@@ -152,7 +152,7 @@ const ResumeUpload = ({ onFileChange }) => {
             border: '1px solid rgba(255, 255, 255, 0.2)',
             maxWidth: '100%',
             wordBreak: 'break-word',
-            fontSize: '14px',
+            fontSize: isMobile ? '10px' : '14px',
             fontWeight: '500'
           }}>
             ✓ {file.name}
@@ -160,10 +160,10 @@ const ResumeUpload = ({ onFileChange }) => {
         )}
         {!file && (
           <div style={{
-            fontSize: isMobile ? '9px' : '13px',
+            fontSize: isMobile ? '8px' : '13px',
             color: 'rgba(255, 255, 255, 0.7)',
             textAlign: 'center',
-            marginTop: isMobile ? '4px' : '10px'
+            marginTop: isMobile ? '3px' : '10px'
           }}>
             Supported formats: PDF, DOCX, TXT
           </div>

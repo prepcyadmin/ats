@@ -176,12 +176,12 @@ textarea:-ms-input-placeholder {
 
 @media (max-width: 768px) {
   .upload-container {
-    padding: 8px 5px;
+    padding: 5px 3px;
   }
   
   .compare-btn {
-    padding: 10px 20px !important;
-    font-size: 12px !important;
+    padding: 8px 16px !important;
+    font-size: 11px !important;
     width: 100%;
     max-width: 100%;
   }

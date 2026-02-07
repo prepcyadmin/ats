@@ -19,8 +19,8 @@ const JobDescription = ({ onJobDescriptionChange }) => {
 
   const containerStyle = {
     width: '100%',
-    padding: isMobile ? '10px' : '15px',
-    borderRadius: isMobile ? '8px' : '12px',
+    padding: isMobile ? '8px' : '15px',
+    borderRadius: isMobile ? '6px' : '12px',
     background: 'linear-gradient(135deg, rgba(0, 214, 255, 0.12) 0%, rgba(138, 43, 226, 0.08) 100%)',
     boxShadow: '0 8px 32px rgba(0, 214, 255, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1) inset',
     backdropFilter: 'blur(10px)',
@@ -37,8 +37,8 @@ const JobDescription = ({ onJobDescriptionChange }) => {
   };
 
   const headingStyle = {
-    fontSize: isMobile ? '12px' : '16px',
-    marginBottom: isMobile ? '8px' : '12px',
+    fontSize: isMobile ? '11px' : '16px',
+    marginBottom: isMobile ? '6px' : '12px',
     textAlign: 'center',
     color: '#ffffff',
     fontWeight: '700',
@@ -52,10 +52,10 @@ const JobDescription = ({ onJobDescriptionChange }) => {
 
   const textareaStyle = {
     width: '100%',
-    minHeight: isMobile ? '100px' : '140px',
-    padding: isMobile ? '8px' : '12px',
-    fontSize: isMobile ? '11px' : '14px',
-    borderRadius: isMobile ? '6px' : '8px',
+    minHeight: isMobile ? '80px' : '140px',
+    padding: isMobile ? '6px' : '12px',
+    fontSize: isMobile ? '10px' : '14px',
+    borderRadius: isMobile ? '5px' : '8px',
     border: '1px solid rgba(255, 255, 255, 0.2)',
     resize: 'vertical',
     background: 'rgba(255, 255, 255, 0.15)',
@@ -85,14 +85,14 @@ const JobDescription = ({ onJobDescriptionChange }) => {
       
       <h2 style={headingStyle}>
         <span style={{
-          width: isMobile ? '24px' : '36px',
-          height: isMobile ? '24px' : '36px',
-          borderRadius: isMobile ? '6px' : '10px',
+          width: isMobile ? '20px' : '36px',
+          height: isMobile ? '20px' : '36px',
+          borderRadius: isMobile ? '5px' : '10px',
           background: 'linear-gradient(135deg, rgba(0, 214, 255, 0.3), rgba(138, 43, 226, 0.3))',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          fontSize: isMobile ? '12px' : '18px',
+          fontSize: isMobile ? '10px' : '18px',
           boxShadow: '0 4px 15px rgba(0, 214, 255, 0.3)'
         }}>📋</span>
         <span>Job Description</span>
@@ -117,8 +117,8 @@ const JobDescription = ({ onJobDescriptionChange }) => {
         />
         
         <div style={{
-          marginTop: isMobile ? '6px' : '12px',
-          fontSize: isMobile ? '9px' : '12px',
+          marginTop: isMobile ? '4px' : '12px',
+          fontSize: isMobile ? '8px' : '12px',
           color: jobDescription.length >= 50 ? 'rgba(0, 255, 127, 0.9)' : 'rgba(255, 255, 255, 0.7)',
           textAlign: 'right',
           fontWeight: '500',

@@ -203,28 +203,28 @@ function App() {
       
       <div style={{
         textAlign: 'center',
-        marginBottom: isMobile ? '12px' : '35px',
-        padding: isMobile ? '0 8px' : '0 20px'
+        marginBottom: isMobile ? '8px' : '35px',
+        padding: isMobile ? '0 5px' : '0 20px'
       }}>
         <h1 style={{
-          fontSize: isMobile ? '14px' : 'clamp(24px, 4vw, 36px)',
+          fontSize: isMobile ? '12px' : 'clamp(24px, 4vw, 36px)',
           fontWeight: '700',
           color: '#ffffff',
-          marginBottom: isMobile ? '6px' : '12px',
+          marginBottom: isMobile ? '4px' : '12px',
           textShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
-          letterSpacing: isMobile ? '0.2px' : '0.5px',
-          lineHeight: isMobile ? '1.2' : '1.4'
+          letterSpacing: isMobile ? '0.1px' : '0.5px',
+          lineHeight: isMobile ? '1.15' : '1.4'
         }}>
           AI ATS Scanner - AI Graph Analysis
         </h1>
         <p style={{ 
           color: 'rgba(255, 255, 255, 0.9)', 
-          fontSize: isMobile ? '10px' : 'clamp(12px, 1.8vw, 16px)',
+          fontSize: isMobile ? '9px' : 'clamp(12px, 1.8vw, 16px)',
           textShadow: '0 2px 10px rgba(0, 0, 0, 0.2)',
           maxWidth: isMobile ? '100%' : '600px',
           margin: '0 auto',
-          lineHeight: isMobile ? '1.3' : '1.6',
-          padding: isMobile ? '0 5px' : '0'
+          lineHeight: isMobile ? '1.25' : '1.6',
+          padding: isMobile ? '0 3px' : '0'
         }}>
           Upload your resume and job description to get an instant ATS analysis
         </p>
@@ -233,11 +233,11 @@ function App() {
       <div style={{
         display: 'grid',
         gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-        gap: isMobile ? '12px' : '35px',
+        gap: isMobile ? '8px' : '35px',
         maxWidth: isMobile ? '100%' : '900px',
-        margin: isMobile ? '0 auto 12px' : '0 auto 30px',
+        margin: isMobile ? '0 auto 8px' : '0 auto 30px',
         width: '100%',
-        padding: isMobile ? '0 8px' : '0 20px',
+        padding: isMobile ? '0 5px' : '0 20px',
         boxSizing: 'border-box'
       }} className="inputs-grid">
         <ResumeUpload onFileChange={setFile} />
@@ -262,8 +262,8 @@ function App() {
       
       <div style={{ 
         textAlign: 'center',
-        marginTop: isMobile ? '15px' : '30px',
-        padding: isMobile ? '0 8px' : '0 20px'
+        marginTop: isMobile ? '10px' : '30px',
+        padding: isMobile ? '0 5px' : '0 20px'
       }}>
         <button
           onClick={handleSubmit}
@@ -274,10 +274,10 @@ function App() {
             cursor: (loading || !file || !jobDescription || jobDescription.length < 50) ? 'not-allowed' : 'pointer',
             minWidth: isMobile ? '100%' : '200px',
             maxWidth: isMobile ? '100%' : 'none',
-            padding: isMobile ? '10px 20px' : '14px 32px',
-            fontSize: isMobile ? '12px' : '16px',
+            padding: isMobile ? '8px 16px' : '14px 32px',
+            fontSize: isMobile ? '11px' : '16px',
             fontWeight: '700',
-            letterSpacing: isMobile ? '0.2px' : '0.5px',
+            letterSpacing: isMobile ? '0.1px' : '0.5px',
             transition: 'all 0.3s ease'
           }}
         >
